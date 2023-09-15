@@ -5,7 +5,14 @@ import { ApiTags } from "@nestjs/swagger";
 @Controller()
 export class AppController {
   @Get()
-  getProducts(): string {
-    return "Welcome to the example NestJS app, please go to `/graphql` to use the GraphQL API or `/api/documentation` to use the Swagger API.";
+  getProducts() {
+    return {
+      date: `date: ${new Date().toISOString()}`,
+      controller: {
+        "GET /": "This page",
+        "GET /api/documentation": "Swagger documentation",
+        "GET /graphql": "GraphQL playground",
+      },
+    };
   }
 }
